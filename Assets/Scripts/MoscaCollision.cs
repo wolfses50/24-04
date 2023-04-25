@@ -7,7 +7,7 @@ public class MoscaCollision : MonoBehaviour
 {
     public Vector3 initialPosition;
     public int lives = 3;
-    public int Puntaje = 0;
+    public int score = 0;
     public TextMeshProUGUI textVidas;
     public TextMeshProUGUI textScore;
 
@@ -16,8 +16,13 @@ public class MoscaCollision : MonoBehaviour
     {
         initialPosition = transform.position;
         textVidas.text = "Vidas: " + lives;
-        textScore.text = "Puntaje: " + Puntaje;
+        textScore.text = score.ToString();
        
+    }
+    private void Death()
+    {
+        Destroy(gameObject);
+        Time.timeScale = 0f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,14 +35,14 @@ public class MoscaCollision : MonoBehaviour
             textVidas.text = "Vidas: " + lives;
             if (lives == 0)
             {
-                Destroy(gameObject);
+                Death();
             }
         }
         else if (collision.gameObject.name == "Target")
         {
             Destroy(collision.gameObject);
-            Puntaje++;
-            textScore.text = "Puntaje: " + Puntaje;
+            score++;
+            textScore.text = score.ToString();
         }
     }
 

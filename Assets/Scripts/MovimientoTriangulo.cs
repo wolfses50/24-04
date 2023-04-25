@@ -24,19 +24,19 @@ public class MovimientoTriangulo : MonoBehaviour
 
         if (Input.GetKey(teclaAvanzar))
         {
-            transform.Translate(0, movementSpeed, 0);
+            transform.Translate(0, movementSpeed * Time.deltaTime, 0);
         }
         if (Input.GetKey(teclaRetroceder))
         {
-            transform.Translate(0, -movementSpeed, 0);
+            transform.Translate(0, -movementSpeed * Time.deltaTime, 0);
         }
         if (Input.GetKey(teclaGirarIzq))
         {
-            transform.Rotate(0, 0, rotationSpeed);
+            transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         }
         if (Input.GetKey(teclaGirarDer))
         {
-            transform.Rotate(0, 0, -rotationSpeed);
+            transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
         }
 
     }
